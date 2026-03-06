@@ -1,1 +1,1 @@
-export function decodeExponentialGolomb(bitSequence: Iterable<unknown> | Iterator<unknown>, k = 0, zigzag = false): number;
+export function decodeExponentialGolomb(bitSequence: Iterable<unknown> | Iterator<unknown>, k?: number, zigzag?: boolean): number;
