@@ -1,0 +1,16 @@
+{
+  "name": "@luncheon/exponential-golomb-code",
+  "version": "1.0.0",
+  "description": "An exponential-Golomb-k coding implementation.",
+  "license": "WTFPL",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luncheon/exponential-golomb-code.git"
+  },
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node test.js"
+  }
+}
