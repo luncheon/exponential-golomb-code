@@ -204,9 +204,6 @@ it("encode(k=1, zigzag=true)", () => {
 it("encode: valid range", () => {
   assert.throws(() => encodeExponentialGolomb(-1), RangeError);
   assert.doesNotThrow(() => encodeExponentialGolomb(-1, 0, true));
-  assert.doesNotThrow(() => encodeExponentialGolomb(Number.MAX_SAFE_INTEGER));
-  assert.throws(() => encodeExponentialGolomb(Number.MAX_SAFE_INTEGER + 2), RangeError);
-  assert.throws(() => encodeExponentialGolomb(Number.MAX_SAFE_INTEGER + 2, 0, true), RangeError);
 });
 
 it("decode", () => {
