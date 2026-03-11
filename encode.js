@@ -6,7 +6,7 @@ const encodeExponentialGolomb0 = (n, _1) => {
 };
 
 export const encodeExponentialGolomb = (n, k = 0, zigzag) => {
-  if ((n < 0 && !zigzag) || n > Number.MAX_SAFE_INTEGER) throw RangeError("encodeExponentialGolomb: supports only safe non-negative integers.");
+  if (n < 0 && !zigzag) throw RangeError("encodeExponentialGolomb: supports only non-negative integers.");
   let _0 = 0;
   let _1 = 1;
   if (k > 30 || (n | 0) !== n) {
