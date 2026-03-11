@@ -41,5 +41,6 @@ for (let k = 0; k < 100; k++) {
 
 ## See also
 
-- [@luncheon/fibonacci-code](https://www.npmjs.com/package/@luncheon/fibonacci-code): A [Fibonacci coding](https://en.wikipedia.org/wiki/Fibonacci_coding) implementation.
-- [@luncheon/varint](https://www.npmjs.com/package/@luncheon/varint): A `BigInt`-native varint codec supporting arbitrary chunk sizes and zigzag encoding.
+- [@luncheon/**golomb-code**](https://www.npmjs.com/package/@luncheon/golomb-code): A [Golomb coding](https://en.wikipedia.org/wiki/Golomb_coding) implementation.
+- [@luncheon/**fibonacci-code**](https://www.npmjs.com/package/@luncheon/fibonacci-code): A [Fibonacci coding](https://en.wikipedia.org/wiki/Fibonacci_coding) implementation.
+- [@luncheon/**varint**](https://www.npmjs.com/package/@luncheon/varint): A `BigInt`-native varint codec supporting arbitrary chunk sizes and zigzag encoding.
