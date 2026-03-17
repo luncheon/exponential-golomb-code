@@ -217,10 +217,18 @@ it("decode", () => {
 it("random", () => {
   for (let k = 0; k < 100; k++) {
     for (let i = 0; i < 100; i++) {
-      const n = Math.round(Math.random() * Number.MAX_SAFE_INTEGER);
-      assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k), k), n);
-      assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k, true), k, true), n);
-      assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-n, k, true), k, true), -n);
+      {
+        const n = Math.round(Math.random() * 0xffffffff);
+        assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k), k), n);
+        assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k, true), k, true), n);
+        assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-n, k, true), k, true), -n);
+      }
+      {
+        const n = Math.round(Math.random() * Number.MAX_SAFE_INTEGER);
+        assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k), k), n);
+        assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k, true), k, true), n);
+        assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-n, k, true), k, true), -n);
+      }
     }
   }
 });
