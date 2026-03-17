@@ -9,7 +9,7 @@ export const encodeExponentialGolomb = (n, k = 0, zigzag) => {
   if (n < 0 && !zigzag) throw RangeError("encodeExponentialGolomb: supports only non-negative integers.");
   let _0 = 0;
   let _1 = 1;
-  if (k > 30 || (zigzag ? (n > 0xffffff || n < -0xffffff) : (n | 0) !== n)) {
+  if (k > 30 || (zigzag ? (n > 0x3fffffff || n < -0x40000000) : (n | 0) !== n)) {
     _0 = 0n;
     _1 = 1n;
     n = BigInt(n);

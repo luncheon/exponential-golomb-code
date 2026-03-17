@@ -206,12 +206,40 @@ it("encode: valid range", () => {
   assert.doesNotThrow(() => encodeExponentialGolomb(-1, 0, true));
 });
 
-it("decode", () => {
+if("decode", () => {
   for (let k = 0; k < 40; k++) {
     for (let n = 0; n < 100_000; n++) {
       assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k), k), n);
     }
   }
+});
+
+it("32bit -> bigint boundary", () => {
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(100, 30), 30), 100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(100, 31), 31), 100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(100, 32), 32), 100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(100, 30, true), 30, true), 100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(100, 31, true), 31, true), 100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(100, 32, true), 32, true), 100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-100, 30, true), 30, true), -100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-100, 31, true), 31, true), -100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-100, 32, true), 32, true), -100);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x3fffffff, 10), 10), 0x3fffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x40000000, 10), 10), 0x40000000);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x7fffffff, 10), 10), 0x7fffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x80000000, 10), 10), 0x80000000);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0xffffffff, 10), 10), 0xffffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x3fffffff, 10, true), 10, true), 0x3fffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x40000000, 10, true), 10, true), 0x40000000);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x7fffffff, 10, true), 10, true), 0x7fffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0x80000000, 10, true), 10, true), 0x80000000);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(0xffffffff, 10, true), 10, true), 0xffffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-0x3fffffff, 10, true), 10, true), -0x3fffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-0x40000000, 10, true), 10, true), -0x40000000);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-0x40000001, 10, true), 10, true), -0x40000001);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-0x7fffffff, 10, true), 10, true), -0x7fffffff);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-0x80000000, 10, true), 10, true), -0x80000000);
+  assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(-0xffffffff, 10, true), 10, true), -0xffffffff);
 });
 
 it("random", () => {
