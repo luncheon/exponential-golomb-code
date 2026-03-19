@@ -62,4 +62,5 @@ npx @luncheon/exponential-golomb-code --k=2 --zigzag -- 3 -20--10 0x80
 
 - [@luncheon/**golomb-code**](https://www.npmjs.com/package/@luncheon/golomb-code): A [Golomb coding](https://en.wikipedia.org/wiki/Golomb_coding) implementation.
 - [@luncheon/**fibonacci-code**](https://www.npmjs.com/package/@luncheon/fibonacci-code): A [Fibonacci coding](https://en.wikipedia.org/wiki/Fibonacci_coding) implementation.
+- [@luncheon/**parity-step-code**](https://www.npmjs.com/package/@luncheon/parity-step-code): A Universal Coding of Integers (UCI) inspired by [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture).
 - [@luncheon/**varint**](https://www.npmjs.com/package/@luncheon/varint): A `BigInt`-native [varint](https://en.wikipedia.org/wiki/Variable-length_quantity) codec supporting arbitrary chunk sizes and zigzag encoding.
