@@ -206,7 +206,7 @@ it("encode: valid range", () => {
   assert.doesNotThrow(() => encodeExponentialGolomb(-1, 0, true));
 });
 
-if("decode", () => {
+it("decode", () => {
   for (let k = 0; k < 40; k++) {
     for (let n = 0; n < 100_000; n++) {
       assert.equal(decodeExponentialGolomb(encodeExponentialGolomb(n, k), k), n);
